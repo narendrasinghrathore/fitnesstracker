@@ -14,7 +14,8 @@ import { MyOwnCustomMaterialModule } from '../theme/mat-theme.module';
     MyOwnCustomMaterialModule
   ],
   exports: [
-    AuthFormComponent
+    AuthFormComponent,
+    MyOwnCustomMaterialModule
   ]
 })
 export class SharedModule { }

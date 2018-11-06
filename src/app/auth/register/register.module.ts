@@ -17,8 +17,8 @@ const routes: Routes = [
   declarations: [RegisterComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(routes),
-    SharedModule
   ]
 })
 export class RegisterModule { }
