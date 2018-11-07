@@ -11,12 +11,16 @@ import { MyOwnCustomMaterialModule } from '../theme/mat-theme.module';
 
 // services
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { MealService } from './meals/meal.service';
 
 @NgModule({
   declarations: [AuthFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    AngularFireDatabaseModule,
     MyOwnCustomMaterialModule
   ],
   exports: [
@@ -29,7 +33,9 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        AuthService
+        AuthService,
+        AuthGuardService,
+        MealService
       ]
     };
   }

@@ -7,9 +7,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { MatButtonModule } from '@angular/material';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
-  imports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule, MatTooltipModule],
-  exports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule, MatTooltipModule],
+  imports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule, MatTooltipModule, MatTabsModule],
+  exports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule, MatTooltipModule, MatTabsModule],
 })
 export class MyOwnCustomMaterialModule { }
