@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+/// service import
+import { AuthService } from '../../shared/services/auth.service';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -7,13 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  error: string;
+
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSubmit($event){
-    console.log($event);
+  async registerUser($event: FormGroup) {
+    const { email, password } = $event.value;
+    try {
+      await this.authService.createUser(email, password);
+      this.router.navigate(['/']);
+    } catch (err) {
+      this.error = err['message'];
+    }
   }
-
 }

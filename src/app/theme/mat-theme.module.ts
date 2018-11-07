@@ -6,9 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { MatButtonModule } from '@angular/material';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
-  imports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule],
-  exports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule],
+  imports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule, MatTooltipModule],
+  exports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule, MatButtonModule, MatTooltipModule],
 })
 export class MyOwnCustomMaterialModule { }

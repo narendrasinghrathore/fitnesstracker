@@ -4,3 +4,11 @@
 // Import css so we can use material design icons i.e(material-design-icons) in material.angular.io
 
 @import '~material-design-icons/iconfont/material-icons.css';
+
+.error{
+    border: 1px dashed #FFC2C1;
+    color: #cc4a4a;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: monospace;
+}
