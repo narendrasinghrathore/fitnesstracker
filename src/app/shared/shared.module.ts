@@ -13,7 +13,7 @@ import { MyOwnCustomMaterialModule } from '../theme/mat-theme.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { MealService } from './meals/meal.service';
+import { MealService } from './services/meals/meal.service';
 
 @NgModule({
   declarations: [AuthFormComponent],
