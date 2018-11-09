@@ -1,0 +1,49 @@
+<div>
+  <form [formGroup]="form" class="container-form">
+    <mat-form-field class="container-mat-input">
+      <input matInput placeholder="Meal name" formControlName="name">
+      <mat-hint>e.g Rajasthani Breakfast </mat-hint>
+      <mat-error *ngIf="form.get('name').hasError('required')">
+        Meal name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <hr class="line" />
+    <div>
+      <mat-toolbar>
+        <span>Food Item(s): {{ingredients.controls.length}}</span>
+        <span class="spacer"></span>
+        <span>
+          <button mat-raised-button color="accent" (click)="addIngredient()" type="button">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            ADD FOOD
+          </button>
+        </span>
+      </mat-toolbar>
+      <div formArrayName="ingredients" class="ingredients">
+        <div *ngFor="let item of ingredients.controls; index as i">
+          <mat-form-field class="container-mat-input">
+            <input matInput placeholder="Food item" [formControlName]="i">
+            <mat-hint>Add food items here!</mat-hint>
+            <button matSuffix (click)="removeItem(i)" matTooltip="Remove meal." mat-button>
+                <mat-icon>remove_circle_outline</mat-icon>
+              </button>
+            <mat-error *ngIf="returnValidation(i)">
+                Food item <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+         
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button mat-button type="button" (click)="createMeal();">
+        <mat-icon aria-label="Create new meal">create</mat-icon>
+        CREATE MEAL
+      </button>
+      <button mat-button type="button" [routerLink]="['../']">
+        <mat-icon aria-label="Cancel and go back to meal page">cancel</mat-icon>
+        CANCEL
+      </button>
+    </div>
+  </form>
+</div>

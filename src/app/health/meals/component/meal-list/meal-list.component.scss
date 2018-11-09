@@ -1,0 +1,28 @@
+
+.meal-card {
+    width: 80vw;
+    margin: auto;
+    box-shadow: 0 7px 18px -2px #dbdbdb;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    max-width: 500px;
+    font-family: monospace;
+    font-size: 1.4em;
+    background: #F7971E;
+    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);
+    background: linear-gradient(to right, #FFD200, #F7971E);
+  }
+  
+  .chip {
+    color: white;
+    background: #41295a;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F0743, #41295a);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F0743, #41295a);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  }
+  

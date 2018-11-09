@@ -1,0 +1,8 @@
+<div class="meal-card" *ngFor="let item of meals;">
+    <h3 mat-subheader>
+      <mat-icon>restaurant</mat-icon>
+      {{item.name}}</h3>
+    <mat-chip-list>
+      <mat-chip class="chip" *ngFor="let i of item.ingredients">{{i}}</mat-chip>
+    </mat-chip-list>
+  </div>

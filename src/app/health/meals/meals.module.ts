@@ -8,6 +8,8 @@ import { MealComponent } from './container/meals/meal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyOwnCustomMaterialModule } from 'src/app/theme/mat-theme.module';
 import { NewComponent } from './container/new/new.component';
+import { MealFormComponent } from './component/meal-form/meal-form.component';
+import { MealListComponent } from './component/meal-list/meal-list.component';
 
 const ROUTES: Routes = [
   { path: '', component: MealComponent },
@@ -15,7 +17,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [MealComponent, NewComponent],
+  declarations: [MealComponent, NewComponent, MealFormComponent, MealListComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -9,10 +9,11 @@ import { MatButtonModule } from '@angular/material';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   imports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule,
-    MatButtonModule, MatTooltipModule, MatTabsModule, MatListModule],
+    MatButtonModule, MatTooltipModule, MatTabsModule, MatListModule, MatChipsModule],
   exports: [MatMenuModule, MatIconModule, MatInputModule, MatToolbarModule,
-    MatButtonModule, MatTooltipModule, MatTabsModule, MatListModule],
+    MatButtonModule, MatTooltipModule, MatTabsModule, MatListModule, MatChipsModule],
 })
 export class MyOwnCustomMaterialModule { }

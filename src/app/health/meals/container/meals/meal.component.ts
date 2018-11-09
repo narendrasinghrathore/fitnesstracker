@@ -18,12 +18,10 @@ export class MealComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.meals$ = this.store.select<Meal[]>('meals');
     this.subscription = this.mealService.meals$.subscribe();
-
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-
   }
 
 }

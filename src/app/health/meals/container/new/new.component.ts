@@ -1,40 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { Meal } from 'src/interfaces/Meal';
+import { MealService } from 'src/app/shared/services/meals/meal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
-export class NewComponent implements OnInit {
+export class NewComponent {
 
-  form = this.fb.group({
-    name: ['', [Validators.required]],
-    ingredients: this.fb.array([])
-  });
-  constructor(private fb: FormBuilder) { }
+  constructor(private mealService: MealService,
+    private router: Router) { }
 
-  ngOnInit() {
+  async addMeal(event: Meal) {
+    await this.mealService.addMeal(event);
+    this.backToMealList();
   }
 
-  get ingredients() {
-    return this.form.get('ingredients') as FormArray;
-  }
-
-  addIngredient() {
-    this.ingredients.push(new FormControl('', [Validators.required]));
-  }
-
-  removeItem(index: number) {
-    this.ingredients.removeAt(index);
-  }
-
-  returnValidation(index: number): boolean {
-    return this.ingredients.controls[index].hasError('required');
-  }
-
-  createMeal() {
-    console.log(this.form.value);
+  backToMealList() {
+    this.router.navigate(['/health/meals']);
   }
 
 }

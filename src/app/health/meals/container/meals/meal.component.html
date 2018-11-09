@@ -3,24 +3,10 @@
     <mat-icon>add_circle_outline</mat-icon>
   </button>
 </div>
-
 <div *ngIf="meals$ | async as meals; else loading;">
+
   <div *ngIf="meals.length > 0">
-    <mat-list>
-      <h3 mat-subheader>Your Meals list</h3>
-      <mat-list-item *ngFor="let folder of folders">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <h4 mat-line>{{folder.name}}</h4>
-        <p mat-line> {{folder.updated | date}} </p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <h3 mat-subheader>Notes</h3>
-      <mat-list-item *ngFor="let note of notes">
-        <mat-icon mat-list-icon>note</mat-icon>
-        <h4 mat-line>{{note.name}}</h4>
-        <p mat-line> {{note.updated | date}} </p>
-      </mat-list-item>
-    </mat-list>
+    <app-meal-list [meals]="meals"></app-meal-list>
   </div>
   <div *ngIf="!meals.length" class="no-meals">
     <mat-icon>face</mat-icon> No meals, add new to start
