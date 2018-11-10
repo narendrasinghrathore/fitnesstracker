@@ -1,8 +1,15 @@
-<div class="meal-card" *ngFor="let item of meals;">
-    <h3 mat-subheader>
+<div class="meal-card" *ngFor="let item of meals;" aria-label="Click to edit meal item">
+  <div class="meal-card-header">
+    <span [routerLink]="getRoute(item)">
       <mat-icon>restaurant</mat-icon>
-      {{item.name}}</h3>
-    <mat-chip-list>
-      <mat-chip class="chip" *ngFor="let i of item.ingredients">{{i}}</mat-chip>
-    </mat-chip-list>
+      {{item.name}}
+    </span>
+    <span [routerLink]="getRoute(item)" class="spacer"></span>
+    <span>
+      <mat-icon class="mat-icon-custom" (click)="removeItem(item)">delete</mat-icon>
+    </span>
   </div>
+  <mat-chip-list [routerLink]="getRoute(item)">
+    <mat-chip class="chip" *ngFor="let i of item.ingredients">{{i}}</mat-chip>
+  </mat-chip-list>
+</div>

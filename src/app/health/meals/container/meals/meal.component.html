@@ -6,7 +6,7 @@
 <div *ngIf="meals$ | async as meals; else loading;">
 
   <div *ngIf="meals.length > 0">
-    <app-meal-list [meals]="meals"></app-meal-list>
+    <app-meal-list [meals]="meals" (remove)="removeItem($event)"></app-meal-list>
   </div>
   <div *ngIf="!meals.length" class="no-meals">
     <mat-icon>face</mat-icon> No meals, add new to start

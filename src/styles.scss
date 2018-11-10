@@ -5,26 +5,32 @@
 
 @import '~material-design-icons/iconfont/material-icons.css';
 
-.error{
-    border: 1px dashed #FFC2C1;
-    color: #cc4a4a;
-    padding: 10px;
-    box-sizing: border-box;
-    font-family: monospace;
-}
-body{
-    overflow-x: hidden;
+.error {
+  border: 1px dashed #FFC2C1;
+  color: #cc4a4a;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: monospace;
 }
 
-.line{
-    border: none;
-    border-top: 1px solid #ebebeb;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 10px auto;
+body {
+  overflow-x: hidden;
 }
 
-.spacer{
-    flex: 1 1 auto;
+.line {
+  border: none;
+  border-top: 1px solid #ebebeb;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-icon-custom {
+  padding: 0 14px;
+  cursor: pointer;
 }

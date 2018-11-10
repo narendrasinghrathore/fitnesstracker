@@ -20,6 +20,13 @@ export class MealComponent implements OnInit, OnDestroy {
     this.subscription = this.mealService.meals$.subscribe();
   }
 
+  removeItem(item: Meal) {
+    const answer = window.confirm(`Do you want to remove the item: ${item.name}`);
+    if (answer) {
+      this.mealService.removeMeal(item);
+    }
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

@@ -1,32 +1,64 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Output, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
+
+import { Router } from '@angular/router';
+import { Meal } from 'src/interfaces/Meal';
 
 @Component({
   selector: 'app-meal-form',
   templateUrl: './meal-form.component.html',
-  styleUrls: ['./meal-form.component.scss']
+  styleUrls: ['./meal-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MealFormComponent implements OnInit {
+export class MealFormComponent implements OnChanges {
+  @Input()
+  meal: Meal;
+
+  exist = false;
 
   @Output()
   create: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
+  @Output()
+  update: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   form = this.fb.group({
     name: ['', [Validators.required]],
     ingredients: this.fb.array([])
   });
-  constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder, private router: Router) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.meal && this.meal.name) {
+      this.exist = true;
+      this.emptyIngredients();
+      this.form.patchValue(this.meal);
+      if (this.meal.ingredients) {
+        for (const item of this.meal.ingredients) {
+          this.addIngredient(item);
+        }
+      }
+    }
+  }
+
+  emptyIngredients() {
+    while (this.ingredients.controls) {
+      this.ingredients.removeAt(0);
+    }
+  }
+
+  cancelMeal() {
+    this.router.navigate(['/health/meals']);
   }
 
   get ingredients() {
     return this.form.get('ingredients') as FormArray;
   }
 
-  addIngredient() {
-    this.ingredients.push(new FormControl('', [Validators.required]));
+  addIngredient(value?: any) {
+    this.ingredients.push(new FormControl(value || '', [Validators.required]));
   }
 
   removeItem(index: number) {
@@ -43,5 +75,10 @@ export class MealFormComponent implements OnInit {
     }
   }
 
+  updateMeal() {
+    if (this.form.valid) {
+      this.update.emit(this.form.value);
+    }
+  }
 
 }

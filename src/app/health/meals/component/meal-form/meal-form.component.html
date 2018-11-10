@@ -25,22 +25,30 @@
             <input matInput placeholder="Food item" [formControlName]="i">
             <mat-hint>Add food items here!</mat-hint>
             <button matSuffix (click)="removeItem(i)" matTooltip="Remove meal." mat-button>
-                <mat-icon>remove_circle_outline</mat-icon>
-              </button>
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
             <mat-error *ngIf="returnValidation(i)">
-                Food item <strong>required</strong>
-              </mat-error>
+              Food item <strong>required</strong>
+            </mat-error>
           </mat-form-field>
-         
+
         </div>
       </div>
     </div>
     <div class="actions">
-      <button mat-button type="button" (click)="createMeal();">
-        <mat-icon aria-label="Create new meal">create</mat-icon>
-        CREATE MEAL
-      </button>
-      <button mat-button type="button" [routerLink]="['../']">
+      <span *ngIf="exist">
+        <button mat-button type="button" (click)="updateMeal();">
+          <mat-icon aria-label="Create new meal">create</mat-icon>
+          UPDATE MEAL
+        </button>
+      </span>
+      <ng-template *ngIf="!exist">
+        <button mat-button type="button" (click)="createMeal();">
+          <mat-icon aria-label="Create new meal">create</mat-icon>
+          CREATE MEAL
+        </button>
+      </ng-template>
+      <button mat-button type="button" (click)="cancelMeal();">
         <mat-icon aria-label="Cancel and go back to meal page">cancel</mat-icon>
         CANCEL
       </button>

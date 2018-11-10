@@ -1,6 +1,18 @@
 <div class="container">
-  <h3>
-    Create new meal
-  </h3>
-  <app-meal-form class="container-form" (create)="addMeal($event)"></app-meal-form>
+    <mat-toolbar>
+        <span *ngIf="meal$ | async as meal; else loading">
+          {{meal.name ? 'Edit meal' : 'Create meal'}}
+        </span>
+        <ng-template #loading>
+          Loading
+        </ng-template>
+      </mat-toolbar>
+      <div *ngIf="meal$ | async as meal; else loadingForm">
+          <app-meal-form class="container-form" [meal]="meal" (create)="addMeal($event)"></app-meal-form>
+      </div>
+      <ng-template #loadingForm>
+        Fetching data ...
+
+      </ng-template>
+  
 </div>

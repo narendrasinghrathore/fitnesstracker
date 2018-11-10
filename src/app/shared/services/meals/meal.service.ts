@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Store } from 'store';
 import { AngularFireDatabase, AngularFireList, DatabaseSnapshot, AngularFireAction } from '@angular/fire/database';
 import { AuthService } from '../auth.service';
-import { tap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap, map, filter } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { Meal } from 'src/interfaces/Meal';
 
 
@@ -13,8 +13,12 @@ import { Meal } from 'src/interfaces/Meal';
 export class MealService {
 
   meals$: Observable<any[]> = this.db.list(`meals/${this.uid}`)
-    .valueChanges()
-    .pipe(tap((next) => this.store.set('meals', next)));
+    .snapshotChanges()
+    .pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+      , tap((next) => this.store.set('meals', next)));
 
   constructor(
     private store: Store,
@@ -28,5 +32,17 @@ export class MealService {
 
   addMeal(meal: Meal) {
     return this.db.list(`meals/${this.uid}`).push(meal);
+  }
+
+  getMeal(key: string): Observable<Meal> {
+    if (!key) { return of(); }
+    return this.store.select<Meal[]>('meals').pipe(
+      filter(Boolean),
+      map((context) => context.find((meal: Meal) => meal.key === key))
+    );
+  }
+
+  removeMeal(meal: Meal) {
+    return this.db.list(`meals/${this.uid}`).remove(meal.key);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Meal } from 'src/interfaces/Meal';
 
 @Component({
@@ -11,9 +11,20 @@ export class MealListComponent implements OnInit {
   @Input()
   meals: Meal[];
 
+  @Output()
+  remove: EventEmitter<Meal> = new EventEmitter<Meal>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getRoute(item: Meal) {
+    return ['./', item.key];
+  }
+
+  removeItem(item: Meal) {
+    this.remove.emit(item);
   }
 
 }

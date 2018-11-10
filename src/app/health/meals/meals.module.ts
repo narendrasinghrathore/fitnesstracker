@@ -13,7 +13,8 @@ import { MealListComponent } from './component/meal-list/meal-list.component';
 
 const ROUTES: Routes = [
   { path: '', component: MealComponent },
-  { path: 'new', component: NewComponent }
+  { path: 'new', component: NewComponent },
+  { path: ':id', component: NewComponent }
 ];
 
 @NgModule({
