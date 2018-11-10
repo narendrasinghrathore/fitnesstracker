@@ -39,7 +39,8 @@ export class MealService {
   }
 
   getMeal(key: string): Observable<Meal> {
-    if (!key) { return of(); }
+    const mealNull: Meal = {};
+    if (!key) { return of(mealNull); }
     return this.store.select<Meal[]>('meals').pipe(
       filter(Boolean),
       map((context) => context.find((meal: Meal) => meal.key === key))
