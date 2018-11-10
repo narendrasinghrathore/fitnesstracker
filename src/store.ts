@@ -5,16 +5,19 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { pluck } from 'rxjs/operators';
 import { User } from './interfaces/User';
 import { Meal } from './interfaces/Meal';
+import { Workout } from './interfaces/Workout';
 
 export interface State {
     user: User;
     meals: Meal[];
+    workouts: Workout[];
     [key: string]: any;
 }
 
 const state: State = {
     user: undefined,
-    meals: undefined
+    meals: undefined,
+    workouts: undefined
 };
 
 export class Store {

@@ -4,7 +4,7 @@ import { MealService } from 'src/app/shared/services/meals/meal.service';
 import { Observable, Subscription } from 'rxjs';
 import { Meal } from 'src/interfaces/Meal';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-new',
@@ -15,6 +15,7 @@ export class NewComponent implements OnInit, OnDestroy {
 
   meal$: Observable<Meal>;
   subscription: Subscription;
+  meal: Meal;
 
   constructor(private router: Router, private activateRoute: ActivatedRoute,
     private mealService: MealService) { }
@@ -29,7 +30,9 @@ export class NewComponent implements OnInit, OnDestroy {
   }
 
   async updateMeal(event: Meal) {
-
+    const key = this.activateRoute.snapshot.params.id;
+    await this.mealService.updateMeal(key, event);
+    this.backToMealList();
   }
 
   ngOnInit() {

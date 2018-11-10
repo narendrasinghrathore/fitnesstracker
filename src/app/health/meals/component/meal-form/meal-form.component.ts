@@ -1,4 +1,4 @@
-import { Component, Output, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 
@@ -11,7 +11,7 @@ import { Meal } from 'src/interfaces/Meal';
   styleUrls: ['./meal-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MealFormComponent implements OnChanges {
+export class MealFormComponent implements OnInit {
   @Input()
   meal: Meal;
 
@@ -30,22 +30,15 @@ export class MealFormComponent implements OnChanges {
 
   constructor(private fb: FormBuilder, private router: Router) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnInit() {
     if (this.meal && this.meal.name) {
       this.exist = true;
-      this.emptyIngredients();
-      this.form.patchValue(this.meal);
+      this.form.patchValue({ ...this.meal });
       if (this.meal.ingredients) {
         for (const item of this.meal.ingredients) {
           this.addIngredient(item);
         }
       }
-    }
-  }
-
-  emptyIngredients() {
-    while (this.ingredients.controls) {
-      this.ingredients.removeAt(0);
     }
   }
 

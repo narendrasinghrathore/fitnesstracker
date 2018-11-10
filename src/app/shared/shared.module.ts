@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { MealService } from './services/meals/meal.service';
+import { WorkoutService } from './services/workouts/workout.service';
 
 @NgModule({
   declarations: [AuthFormComponent],
@@ -35,7 +36,8 @@ export class SharedModule {
       providers: [
         AuthService,
         AuthGuardService,
-        MealService
+        MealService,
+        WorkoutService
       ]
     };
   }

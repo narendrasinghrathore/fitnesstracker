@@ -42,12 +42,12 @@
           UPDATE MEAL
         </button>
       </span>
-      <ng-template *ngIf="!exist">
+      <span *ngIf="!exist">
         <button mat-button type="button" (click)="createMeal();">
           <mat-icon aria-label="Create new meal">create</mat-icon>
           CREATE MEAL
         </button>
-      </ng-template>
+      </span>
       <button mat-button type="button" (click)="cancelMeal();">
         <mat-icon aria-label="Cancel and go back to meal page">cancel</mat-icon>
         CANCEL
