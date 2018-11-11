@@ -1,0 +1,17 @@
+<div class="workout-card" *ngFor="let item of workouts;" aria-label="Click to edit workout item">
+  <div class="workout-card-header">
+    <span [routerLink]="getRoute(item)">
+      <img class="workout-icon" src="assets/svg-icons/{{item.type}}.svg" />
+    </span>
+    <span>
+        {{item.name}}
+    </span>
+    <span [routerLink]="getRoute(item)" class="spacer"></span>
+    <span>
+      <mat-icon class="mat-icon-custom" (click)="removeItem(item)">delete</mat-icon>
+    </span>
+  </div>
+  <!-- <mat-chip-list [routerLink]="getRoute(item)">
+    <mat-chip class="chip" *ngFor="let i of item.ingredients">{{i}}</mat-chip>
+  </mat-chip-list> -->
+</div>

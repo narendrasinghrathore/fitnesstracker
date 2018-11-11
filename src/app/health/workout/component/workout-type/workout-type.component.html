@@ -1,0 +1,9 @@
+<div class="workout-type">
+  <div class="workout_pane" >
+    <div *ngFor="let selector of selectors" class="pane" (click)="selectType(selector);" [class.active]="selector === value">
+        <img src="assets/svg-icons/{{selector}}.svg" />
+        <span>{{selector | uppercase}}</span>
+        <mat-icon [class.icon-active]="selector === value" class="icon">check_circle</mat-icon>
+    </div>
+  </div>
+</div>

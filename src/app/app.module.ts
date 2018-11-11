@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -11,6 +12,7 @@ import { MyOwnCustomMaterialModule } from './theme/mat-theme.module';
 import { Store } from 'store';
 import { SharedModule } from './shared/shared.module';
 import { AppNavComponent } from './app-nav/app-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { AppNavComponent } from './app-nav/app-nav.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     AuthModule,
+    HttpClientModule,
     MyOwnCustomMaterialModule,
     SharedModule.forRoot()
   ],

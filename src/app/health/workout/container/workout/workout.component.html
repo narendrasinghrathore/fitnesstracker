@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-toolbar>
+    <span *ngIf="(workout$ | async) as workout; else loadingTitle">
+      {{workout.name ? 'Edit': 'Create'}} workout
+    </span>
+    <ng-template #loadingTitle>
+      Fetching Form ...
+    </ng-template>
+  </mat-toolbar>
+  <div>
+    <div *ngIf="(workout$ | async) as workout; else loadingForm">
+      <app-workout-form class="container-form" [workout]="workout" (create)="addWorkout($event)" (update)="updateWorkout($event)">
+      </app-workout-form>
+    </div>
+    <ng-template #loadingForm>
+      Fetching data ...
+    </ng-template>
+  </div>
+</div>

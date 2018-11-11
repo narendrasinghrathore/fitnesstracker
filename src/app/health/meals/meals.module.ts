@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // containers
 
 import { MealComponent } from './container/meals/meal.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MyOwnCustomMaterialModule } from 'src/app/theme/mat-theme.module';
 import { NewComponent } from './container/new/new.component';
 import { MealFormComponent } from './component/meal-form/meal-form.component';

@@ -1,0 +1,49 @@
+.workout_pane {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
+
+.pane {
+  padding: 10px;
+  margin: 10px;
+  background-color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  box-shadow: 4px 5px 14px -3px #b3b3b3;
+  border-radius: 4px;
+  position: relative;
+
+  img {
+    width: auto;
+    height: 10vh;
+    max-width: 120px;
+  }
+
+  span {
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 1.5em;
+  }
+
+
+}
+
+.active {
+  background-color: #dedede;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: none;
+}
+
+.icon-active {
+  display: inline-flex;
+}

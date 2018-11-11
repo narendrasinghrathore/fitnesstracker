@@ -7,6 +7,8 @@ import { Observable, of } from 'rxjs';
 import { Workout } from 'src/interfaces/Workout';
 
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 
 @Injectable()
@@ -15,15 +17,16 @@ export class WorkoutService {
   workouts$: Observable<any[]> = this.db.list(`workouts/${this.uid}`)
     .snapshotChanges()
     .pipe(
-      map(changes =>
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-      , tap((next) => this.store.set('workouts', next)));
+      map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })
+      ))
+      , tap((next) => this.store.set('workouts', next)
+      ));
 
   constructor(
     private store: Store,
     private db: AngularFireDatabase,
-    private auth: AuthService
+    private auth: AuthService,
+    private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer
   ) { }
 
   get uid() {
@@ -39,7 +42,8 @@ export class WorkoutService {
   }
 
   getWorkout(key: string): Observable<Workout> {
-    if (!key) { return of(); }
+    const workoutNull: Workout = {};
+    if (!key) { return of(workoutNull); }
     return this.store.select<Workout[]>('workouts').pipe(
       filter(Boolean),
       map((context) => context.find((workout: Workout) => workout.key === key))
@@ -48,5 +52,11 @@ export class WorkoutService {
 
   removeWorkout(workout: Workout) {
     return this.db.list(`workouts/${this.uid}`).remove(workout.key);
+  }
+
+  registerSvgIcon(iconName: string) {
+    return this.iconRegistry.addSvgIcon(
+      iconName,
+      this.sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-icons/${iconName}.svg`));
   }
 }
