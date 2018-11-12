@@ -10,6 +10,7 @@ import { WorkoutListComponent } from './component/workout-list/workout-list.comp
 // material theme
 import { MyOwnCustomMaterialModule } from 'src/app/theme/mat-theme.module';
 import { WorkoutTypeComponent } from './component/workout-type/workout-type.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const ROUTES: Routes = [
   { path: '', component: WorkoutsComponent },
@@ -23,7 +24,8 @@ const ROUTES: Routes = [
     CommonModule,
     ReactiveFormsModule,
     MyOwnCustomMaterialModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    SharedModule.forRoot()
   ]
 })
 export class WorkoutModule { }

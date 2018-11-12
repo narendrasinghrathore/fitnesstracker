@@ -2,7 +2,7 @@
   <form [formGroup]="form" class="container-form">
     <mat-form-field class="container-mat-input">
       <input matInput placeholder="Workout name" formControlName="name">
-      <mat-hint>e.g Stren Breakfast </mat-hint>
+      <mat-hint>e.g Bench Press </mat-hint>
       <mat-error *ngIf="form.get('name').hasError('required')">
         Workout name is <strong>required</strong>
       </mat-error>
@@ -13,15 +13,85 @@
       <app-workout-type formControlName="type">
       </app-workout-type>
     </div>
+    <hr class="line" />
+    <div>
+
+    </div>
+    <ng-template *ngIf="form.get('type').value === 'endurance'; then enduranceDiv; else strengthDiv">
+
+    </ng-template>
+    <ng-template #enduranceDiv>
+      <div formGroupName="endurance">
+        <mat-form-field class="container-mat-input">
+          <mat-label>Distance</mat-label>
+          <input matInput placeholder="e.g 10 (km)" type="number" formControlName="distance">
+          <mat-hint>e.g 10 (km) </mat-hint>
+          <mat-error *ngIf="form.get('endurance').controls['distance'].hasError('required')">
+            Distance is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('endurance').controls['distance'].hasError('min')">
+            <strong>You should have at least 1 km added</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="container-mat-input">
+          <mat-label>Duration</mat-label>
+          <input matInput placeholder="e.g 10 min" type="number" formControlName="duration">
+          <mat-hint>e.g 5 min </mat-hint>
+          <mat-error *ngIf="form.get('endurance').controls['duration'].hasError('required')">
+            Duration is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('endurance').controls['duration'].hasError('min')">
+            <strong>You should have at least 1 min added</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </ng-template>
+    <ng-template #strengthDiv>
+      <div formGroupName="strength">
+        <mat-form-field class="container-mat-input">
+          <mat-label>Reps</mat-label>
+          <input matInput placeholder="e.g 10 (Reps)" formControlName="reps">
+          <mat-hint>e.g Total reps </mat-hint>
+          <mat-error *ngIf="form.get('strength').controls['reps'].hasError('required')">
+            Reps is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('strength').controls['reps'].hasError('min')">
+            <strong>You should have at least 1 rep added</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="container-mat-input">
+          <mat-label>Sets</mat-label>
+          <input matInput placeholder=" e.g 5 (Sets)" formControlName="sets">
+          <mat-hint>e.g Set of 10 reps </mat-hint>
+          <mat-error *ngIf="form.get('strength').controls['sets'].hasError('required')">
+            Sets is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('strength').controls['sets'].hasError('min')">
+            <strong>You should have at least 1 set added</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="container-mat-input">
+          <mat-label>Weight</mat-label>
+          <input matInput placeholder=" e.g 10 (kg)" formControlName="weight">
+          <mat-hint>e.g 19 kg </mat-hint>
+          <mat-error *ngIf="form.get('strength').controls['weight'].hasError('required')">
+            Weight is <strong>required</strong>
+            <mat-error *ngIf="form.get('strength').controls['weight'].hasError('min')">
+              <strong>You should have add 1 kg</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </ng-template>
     <div class="actions">
       <span *ngIf="exist">
-        <button mat-button type="button" (click)="updateWorkout();">
+        <button mat-button type="button" [disabled]="form.invalid" (click)="updateWorkout();">
           <mat-icon aria-label="Create new workout">create</mat-icon>
           UPDATE WORKOUT
         </button>
       </span>
       <span *ngIf="!exist">
-        <button mat-button type="button" (click)="createWorkout();">
+        <button mat-button [disabled]="form.invalid" type="button" (click)="createWorkout();">
           <mat-icon aria-label="Create new meal">create</mat-icon>
           CREATE WORKOUT
         </button>

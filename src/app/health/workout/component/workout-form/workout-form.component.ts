@@ -23,9 +23,17 @@ export class WorkoutFormComponent implements OnInit {
 
   form = this.fb.group({
     name: ['', [Validators.required]],
-    type: ['strength', [Validators.required]]
+    type: ['strength', [Validators.required]],
+    strength: this.fb.group({
+      reps: [1, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]],
+      sets: [1, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]],
+      weight: [1, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]]
+    }),
+    endurance: this.fb.group({
+      duration: [1, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]],
+      distance: [1, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(1)]]
+    }),
   });
-  // ingredients: this.fb.array([])
 
   constructor(private fb: FormBuilder, private router: Router) { }
 
@@ -33,33 +41,12 @@ export class WorkoutFormComponent implements OnInit {
     if (this.workout && this.workout.name) {
       this.exist = true;
       this.form.patchValue({ ...this.workout });
-      // if (this.workout.strength) {
-      //   for (const item of this.workout.strength) {
-      //     this.addStrength(item);
-      //   }
-      // }
     }
   }
 
   cancelWorkout() {
     this.router.navigate(['/health/workout']);
   }
-
-  // get ingredients() {
-  //   return this.form.get('ingredients') as FormArray;
-  // }
-
-  // addStrength(value?: any) {
-  //   this.ingredients.push(new FormControl(value || '', [Validators.required]));
-  // }
-
-  // removeItem(index: number) {
-  //   this.ingredients.removeAt(index);
-  // }
-
-  // returnValidation(index: number): boolean {
-  //   return this.ingredients.controls[index].hasError('required');
-  // }
 
   createWorkout() {
     if (this.form.valid) {

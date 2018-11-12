@@ -15,9 +15,10 @@ import { AuthGuardService } from './services/auth-guard.service';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { MealService } from './services/meals/meal.service';
 import { WorkoutService } from './services/workouts/workout.service';
+import { WorkoutPipe } from './pipes/workout.pipe';
 
 @NgModule({
-  declarations: [AuthFormComponent],
+  declarations: [AuthFormComponent, WorkoutPipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -26,6 +27,7 @@ import { WorkoutService } from './services/workouts/workout.service';
   ],
   exports: [
     AuthFormComponent,
+    WorkoutPipe,
     MyOwnCustomMaterialModule
   ]
 })

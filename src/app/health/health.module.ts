@@ -21,7 +21,7 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     MyOwnCustomMaterialModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
   ],
   declarations: [HealthComponent]
 })

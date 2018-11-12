@@ -11,7 +11,7 @@
       <mat-icon class="mat-icon-custom" (click)="removeItem(item)">delete</mat-icon>
     </span>
   </div>
-  <!-- <mat-chip-list [routerLink]="getRoute(item)">
-    <mat-chip class="chip" *ngFor="let i of item.ingredients">{{i}}</mat-chip>
-  </mat-chip-list> -->
+  <div>
+    {{item | workout}}
+  </div>
 </div>
