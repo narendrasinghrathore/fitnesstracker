@@ -1,0 +1,13 @@
+<div class="schedule-controls">
+  <mat-toolbar>
+    <button mat-icon-button (click)="navigate(offset - 1)">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <span class="spacer center-text">
+      {{selected | date: 'y MMMM d'}}
+    </span>
+    <button mat-icon-button (click)="navigate(offset + 1)">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>

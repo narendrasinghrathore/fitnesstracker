@@ -25,7 +25,7 @@ const ROUTES: Routes = [
     ReactiveFormsModule,
     MyOwnCustomMaterialModule,
     RouterModule.forChild(ROUTES),
-    SharedModule.forRoot()
+    SharedModule
   ]
 })
 export class WorkoutModule { }

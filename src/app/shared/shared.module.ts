@@ -16,6 +16,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { MealService } from './services/meals/meal.service';
 import { WorkoutService } from './services/workouts/workout.service';
 import { WorkoutPipe } from './pipes/workout.pipe';
+import { ScheduleService } from './services/schedules/schedule.service';
 
 @NgModule({
   declarations: [AuthFormComponent, WorkoutPipe],
@@ -39,7 +40,8 @@ export class SharedModule {
         AuthService,
         AuthGuardService,
         MealService,
-        WorkoutService
+        WorkoutService,
+        ScheduleService
       ]
     };
   }

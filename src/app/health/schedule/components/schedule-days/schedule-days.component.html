@@ -1,0 +1,5 @@
+<div class="schdule-days">
+  <button type="button" (click)="selectDay(i)" [color]="i === selected ? 'primary' : null" *ngFor="let day of days; index as i" mat-mini-fab>
+    {{day}}
+  </button>
+</div>

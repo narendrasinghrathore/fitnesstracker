@@ -6,18 +6,25 @@ import { pluck } from 'rxjs/operators';
 import { User } from './interfaces/User';
 import { Meal } from './interfaces/Meal';
 import { Workout } from './interfaces/Workout';
+import { ScheduleItem } from './interfaces/ScheduleItem';
 
 export interface State {
     user: User;
     meals: Meal[];
     workouts: Workout[];
+    date: Date;
+    schedule: ScheduleItem[];
+    selected: any;
     [key: string]: any;
 }
 
 const state: State = {
     user: undefined,
     meals: undefined,
-    workouts: undefined
+    workouts: undefined,
+    date: undefined,
+    schedule: undefined,
+    selected: undefined
 };
 
 export class Store {
