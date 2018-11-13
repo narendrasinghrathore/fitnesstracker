@@ -8,13 +8,14 @@ import { ScheduleDaysComponent } from './components/schedule-days/schedule-days.
 import { ScheduleControlsComponent } from './components/schedule-controls/schedule-controls.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ScheduleSectionComponent } from './components/schedule-section/schedule-section.component';
+import { ScheduleAssignComponent } from './components/schedule-assign/schedule-assign.component';
 
 const ROUTES: Routes = [
   { path: '', component: ScheduleComponent }
 ];
 
 @NgModule({
-  declarations: [ScheduleComponent, ScheduleCalendarComponent, ScheduleDaysComponent, ScheduleControlsComponent, ScheduleSectionComponent],
+  declarations: [ScheduleComponent, ScheduleCalendarComponent, ScheduleDaysComponent, ScheduleControlsComponent, ScheduleSectionComponent, ScheduleAssignComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

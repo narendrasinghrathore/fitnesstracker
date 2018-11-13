@@ -1,10 +1,8 @@
 <div class="schedule-calendar">
-  <app-schedule-controls [selected]="selectedDay" (move)="onChange($event)">
-    
+  <app-schedule-controls [selected]="selectedDay" (move)="onChange($event)">    
   </app-schedule-controls>
 
   <app-schedule-days [selected]="selectedDayIndex" (select)="selectDay($event)">
-
   </app-schedule-days>
 
   <app-schedule-section *ngFor="let section of sections"

@@ -25,7 +25,7 @@ export class WorkoutComponent implements OnInit, OnDestroy {
   }
 
   backToWorkoutList() {
-    this.router.navigate(['/health/workout']);
+    this.router.navigate(['/health/workouts']);
   }
 
   async updateWorkout(event: Workout) {

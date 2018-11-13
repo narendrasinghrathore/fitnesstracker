@@ -13,7 +13,7 @@ export class HealthComponent implements OnInit {
   tabs: Tabs[] = [
     { path: 'schedule', label: 'Schedule' },
     { path: 'meals', label: 'Meals' },
-    { path: 'workout', label: 'Workout Plans' },
+    { path: 'workouts', label: 'Workout Plans' },
   ];
 
   ngOnInit() {

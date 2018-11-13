@@ -64,7 +64,6 @@ export class ScheduleCalendarComponent implements OnInit, OnChanges {
       day, data, type,
       assigned, section
     });
-
   }
 
   onChange(weekOffset: number) {

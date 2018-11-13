@@ -39,11 +39,6 @@ export class WorkoutTypeComponent implements OnInit, ControlValueAccessor {
     this.onModelChange(value);
     this.onTouch();
   }
-  // setDisabledState?(isDisabled: boolean): void {
-  //   throw new Error("Method not implemented.");
-  // }
-
-
 
   constructor() { }
 

@@ -45,7 +45,7 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   cancelWorkout() {
-    this.router.navigate(['/health/workout']);
+    this.router.navigate(['/health/workouts']);
   }
 
   createWorkout() {

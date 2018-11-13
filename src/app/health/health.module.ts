@@ -12,7 +12,7 @@ const ROUTES: Routes = [
     path: '', component: HealthComponent, children: [
       { path: 'meals', canActivate: [AuthGuardService], loadChildren: './meals/meals.module#MealsModule' },
       { path: 'schedule', canActivate: [AuthGuardService], loadChildren: './schedule/schedule.module#ScheduleModule' },
-      { path: 'workout', canActivate: [AuthGuardService], loadChildren: './workout/workout.module#WorkoutModule' }
+      { path: 'workouts', canActivate: [AuthGuardService], loadChildren: './workout/workout.module#WorkoutModule' }
     ]
   }
 ];

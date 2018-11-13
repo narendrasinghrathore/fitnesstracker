@@ -1,0 +1,35 @@
+<div class="schedule_assign">
+  <div clas="modal">
+    <div class="header">
+      <span>
+        {{section.type}}
+      </span>
+      <button [routerLink]="getRoute(section.type)">
+        New {{section.type}}
+      </button>
+    </div>
+    <div class="list">
+      <span *ngIf="!list?.length">
+        No items to show, add new from above.
+      </span>
+      <ul *ngIf="list?.length">
+        <li *ngFor="let item of list" [class.active]="exist(item.name)" (click)="toogleItem(item.name)">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+    <div class="actions">
+      <div>
+        <button (click)="updateAssign()" type="button" mat-button>
+          Update
+        </button>
+      </div>
+      <div>
+          <button (click)="cancelAssign()" type="button" mat-button>
+            Cancel
+          </button>
+        </div>
+    </div>
+  </div>
+
+</div>
